@@ -27,10 +27,11 @@ function createGalleryMarkup(galleryItems) {
     .join("");
 }
 
-function onpicturesContainerCkick(evt) {
-  const isGalleryItem = evt.target.classlist.contians("gallery__item");
+function onpicturesContainerCkick(e) {
+  e.preventDefault();
+  const isGalleryItem = e.target.classlist.contians("gallery__item");
   if (!isGalleryItem) {
     return;
   }
-  console.log(evt.target.dataset.original);
+  console.log(e.target.dataset.original);
 }
