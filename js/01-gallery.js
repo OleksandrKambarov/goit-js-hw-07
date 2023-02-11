@@ -29,9 +29,8 @@ function createGalleryMarkup(galleryItems) {
 
 function onpicturesContainerCkick(e) {
   e.preventDefault();
-  const isGalleryItem = e.target.classlist.contians("gallery__item");
-  if (!isGalleryItem) {
+  if (!e.target.dataset.source) {
     return;
   }
-  console.log(e.target.dataset.original);
+  console.log(e.target.dataset.source);
 }
