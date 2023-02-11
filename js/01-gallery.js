@@ -6,6 +6,9 @@ const picturesContainer = document.querySelector(".js-gallery");
 const galleryMarkup = createGalleryMarkup(galleryItems);
 
 picturesContainer.insertAdjacentHTML("beforeend", galleryMarkup);
+
+picturesContainer.addEventListener("click", onpicturesContainerCkick);
+
 function createGalleryMarkup(galleryItems) {
   return galleryItems
     .map(({ preview, original, description }) => {
@@ -22,4 +25,12 @@ function createGalleryMarkup(galleryItems) {
       </div>`;
     })
     .join("");
+}
+
+function onpicturesContainerCkick(evt) {
+  const isGalleryItem = evt.target.classlist.contians("gallery__item");
+  if (!isGalleryItem) {
+    return;
+  }
+  console.log(evt.target.dataset.original);
 }
