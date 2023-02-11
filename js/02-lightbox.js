@@ -3,7 +3,7 @@ import { galleryItems } from "./gallery-items.js";
 
 console.log(galleryItems);
 
-const picturesContainer = document.querySelector(".js-gallery");
+const picturesContainer = document.querySelector(".gallery");
 const galleryMarkup = createGalleryMarkup(galleryItems);
 
 picturesContainer.insertAdjacentHTML("beforeend", galleryMarkup);
@@ -30,9 +30,8 @@ function onpicturesContainerCkick(e) {
 
   console.log(e.target);
 
-  //     const instance = basicLightbox.create(`
-  //     <img src= ${e.target.dataset.source} width="800" height="600">
-  //   `);
-
-  //     instance.show();
+  let lightbox = new SimpleLightbox(".gallery a", {
+    captionDelay: 250,
+    captionsData: "alt",
+  });
 }
