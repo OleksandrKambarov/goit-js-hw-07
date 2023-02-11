@@ -29,22 +29,21 @@ function createGalleryMarkup(galleryItems) {
 
 function onpicturesContainerCkick(e) {
   e.preventDefault();
-
+  window.addEventListener("keydown", onCloseModel);
   if (!e.target.dataset.source) {
     return;
   }
-  console.log(e.target.dataset.source);
 
   const instance = basicLightbox.create(`
   <img src= ${e.target.dataset.source} width="800" height="600">
 `);
 
   instance.show();
-}
 
-// const onCloseModel = (e) => {
-//   const ESC_KEY = "Escape";
-//   if (e.code === ESC_KEY) {
-//     instance.close();
-//   }
-// };
+  function onCloseModel(e) {
+    window.removeEventListener("keydown", onCloseModel);
+    if (e.code === "Escape") {
+      instance.close();
+    }
+  }
+}
