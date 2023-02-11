@@ -29,6 +29,7 @@ function createGalleryMarkup(galleryItems) {
 
 function onpicturesContainerCkick(e) {
   e.preventDefault();
+
   if (!e.target.dataset.source) {
     return;
   }
@@ -40,3 +41,10 @@ function onpicturesContainerCkick(e) {
 
   instance.show();
 }
+
+// const onCloseModel = (e) => {
+//   const ESC_KEY = "Escape";
+//   if (e.code === ESC_KEY) {
+//     instance.close();
+//   }
+// };

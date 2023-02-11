@@ -23,10 +23,11 @@ function createGalleryMarkup(galleryItems) {
 }
 
 function onpicturesContainerCkick(e) {
-  e.preventDefault();
-  if (!e.target) {
+  if (e.target.nodeName !== "IMG") {
     return;
   }
+  e.preventDefault();
+
   console.log(e.target);
 
   //     const instance = basicLightbox.create(`
