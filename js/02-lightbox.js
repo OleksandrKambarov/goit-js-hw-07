@@ -4,34 +4,20 @@ import { galleryItems } from "./gallery-items.js";
 console.log(galleryItems);
 
 const picturesContainer = document.querySelector(".gallery");
-const galleryMarkup = createGalleryMarkup(galleryItems);
 
-picturesContainer.insertAdjacentHTML("beforeend", galleryMarkup);
-
-picturesContainer.addEventListener("click", onpicturesContainerCkick);
-
-function createGalleryMarkup(galleryItems) {
-  return galleryItems
-    .map(({ preview, original, description }) => {
-      return `
+const galleryMarkup = galleryItems
+  .map(({ preview, original, description }) => {
+    return `
       <a class="gallery__item" href="${original}">
       <img class="gallery__image" src="${preview}" alt="${description}" />
     </a> 
       `;
-    })
-    .join("");
-}
+  })
+  .join("");
 
-function onpicturesContainerCkick(e) {
-  if (e.target.nodeName !== "IMG") {
-    return;
-  }
-  e.preventDefault();
+picturesContainer.innerHTML = galleryMarkup;
 
-  console.log(e.target);
-
-  let lightbox = new SimpleLightbox(".gallery a", {
-    captionDelay: 250,
-    captionsData: "alt",
-  });
-}
+let lightbox = new SimpleLightbox(".gallery a", {
+  captionDelay: 250,
+  captionsData: "alt",
+});

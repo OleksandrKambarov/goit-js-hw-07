@@ -41,9 +41,9 @@ function onpicturesContainerCkick(e) {
   instance.show();
 
   function onCloseModel(e) {
-    window.removeEventListener("keydown", onCloseModel);
+    window.removeEventListener("keydown", onpicturesContainerCkick);
     if (e.code === "Escape") {
-      instance.close();
+      instance.close(() => console.log("lightbox not visible anymore"));
     }
   }
 }
