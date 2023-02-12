@@ -29,19 +29,24 @@ function createGalleryMarkup(galleryItems) {
 
 function onpicturesContainerCkick(e) {
   e.preventDefault();
-  window.addEventListener("keydown", onCloseModel);
+
   if (!e.target.dataset.source) {
     return;
   }
 
-  const instance = basicLightbox.create(`
+  const instance = basicLightbox.create(
+    `
   <img src= ${e.target.dataset.source} width="800" height="600">
-`);
+`,
+    {
+      onShow: () => document.addEventListener("keydown", onCloseModel),
+      onClose: () => document.removeEventListener("keydown", onCloseModel),
+    }
+  );
 
   instance.show();
 
   function onCloseModel(e) {
-    window.removeEventListener("keydown", onpicturesContainerCkick);
     if (e.code === "Escape") {
       instance.close(() => console.log("lightbox not visible anymore"));
     }
